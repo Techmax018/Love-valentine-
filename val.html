@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Miracle for Grace ❤️</title>
+    <style>
+        :root {
+            --rose-red: #ff0a54;
+            --ice-white: #f0faff;
+            --gold: #ffb703;
+        }
+
+        body, html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Palatino', 'URW Palladio L', serif;
+            overflow: hidden;
+        }
+
+        /* Captivating Shifting Background */
+        body {
+            background: linear-gradient(45deg, #DF2150, #AF4155, #5E9BD5, #fb6f92);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* The Entrance Overlay */
+        #overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .idiom-box {
+            color: white;
+            text-align: center;
+            max-width: 80%;
+            margin-bottom: 40px;
+        }
+
+        .idiom-box h2 {
+            font-weight: 300;
+            font-style: italic;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .open-btn {
+            background: white;
+            color: var(--rose-red);
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .open-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* The Main Card */
+        #mainCard {
+            display: none;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 3.5rem;
+            border-radius: 50px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            animation: cardReveal 1.2s ease-out;
+            position: relative;
+        }
+
+        @keyframes cardReveal {
+            from { opacity: 0; transform: scale(0.8) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        h1 { color: var(--rose-red); font-size: 2.8rem; margin: 0; }
+        .miracle-text { color: #555; font-size: 1.1rem; line-height: 1.6; margin: 20px 0; }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            min-height: 60px;
+        }
+
+        .action-btn {
+            padding: 12px 35px;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        #yesBtn { background: var(--rose-red); color: white; }
+        #noBtn { background: #eee; color: #999; }
+
+        /* Environmental Effects */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 50;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay">
+        <div class="idiom-box">
+            <h2>"In the garden of my life, you are the rose that never wilts and the miracle that never ends."</h2>
+            <p style="color: rgba(255,255,255,0.8);">Missing your touch...</p>
+        </div>
+        <button class="open-btn" onclick="reveal()">Unlock Heart ❤️</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="Jax - Like My Father (Official Video)(M4A_128K).m4a" type="audio/mpeg">
+    </audio>
+
+    <div id="mainCard">
+        <div style="font-size: 3.5rem;">🌹❄️</div>
+        <h1>Grace...</h1>
+        <p class="miracle-text">
+            I know this is not the appropriate time, but there is no perfect time. 
+            <strong>Loving you is the greatest miracle that ever happened to me.</strong> 
+            You make my heart bloom every single day.
+            <br><br>
+            My love, will you be my Valentine?
+        </p>
+        
+        <div class="btn-container">
+            <button id="yesBtn" class="action-btn" onclick="finish('yes')">YES! 🤗</button>
+            <button id="noBtn" class="action-btn" onmouseover="dodge()" onclick="finish('no')">No</button>
+        </div>
+    </div>
+
+    <script>
+        let dodgeCount = 0;
+
+        function reveal() {
+            document.getElementById('bgMusic').play();
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('mainCard').style.display = 'block';
+                startParticles();
+            }, 1000);
+        }
+
+        function startParticles() {
+            const items = ['🌸', '🌹', '❄️', '✨', '🤍'];
+            setInterval(() => {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.innerHTML = items[Math.floor(Math.random() * items.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.fontSize = Math.random() * 20 + 10 + 'px';
+                p.style.animationDuration = Math.random() * 3 + 4 + 's';
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 7000);
+            }, 150);
+        }
+
+        function dodge() {
+            if (dodgeCount < 6) {
+                const btn = document.getElementById('noBtn');
+                btn.style.position = 'fixed';
+                btn.style.left = Math.random() * 80 + 'vw';
+                btn.style.top = Math.random() * 80 + 'vh';
+                dodgeCount++;
+            }
+        }
+
+        function finish(choice) {
+            const phone = "0786493506";
+            const msg = choice === 'yes' 
+                ? "Yes! I would love to be your Valentine! 🤗❤️🌹" 
+                : "I'm sorry, but I have to decline being your Valentine. 😢❄️";
+            
+            document.getElementById('mainCard').innerHTML = `
+                <div style="font-size: 4rem;">${choice === 'yes' ? '💖' : '💔'}</div>
+                <h2>${choice === 'yes' ? 'My heart is yours!' : 'I understand...'}</h2>
+                <p>Sending your answer to me now...</p>
+            `;
+
+            setTimeout(() => {
+                window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
